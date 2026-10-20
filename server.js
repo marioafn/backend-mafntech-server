@@ -7,24 +7,25 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// CONEXIÓN MYSQL
+
+ // CONEXIÓN MYSQL: RAILWAY O XAMPP
 const conexion = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'tiendainformatica'
+    host: process.env.MYSQLHOST || 'localhost',
+    user: process.env.MYSQLUSER || 'root',
+    password: process.env.MYSQLPASSWORD || '',
+    database: process.env.MYSQLDATABASE || 'tiendainformatica',
+    port: Number(process.env.MYSQLPORT || 3306)
 });
 
 // PROBAR CONEXIÓN
 conexion.connect((error) => {
-
-    if(error){
-        console.log('Error de conexión');
+    if (error) {
+        console.error('Error al conectar con MySQL:', error.message);
     } else {
-        console.log('Conexión exitosa a MySQLL');
+        console.log('Conexión exitosa a MySQL');
     }
-
 });
+
 
 // CONSULTAR FABRICANTES
 app.get('/fabricantes', (req, res) => {
