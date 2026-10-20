@@ -252,4 +252,6 @@ app.put('/articulos/:id', (req, res) => {
 // SERVIDOR
 const PORT = process.env.PORT || 3001;
 
-app.listen(PORT)
+app.listen(PORT, () => {
+    console.log(`Servidor ejecutándose en el puerto ${PORT}`);
+});
