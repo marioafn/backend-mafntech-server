@@ -19,11 +19,12 @@ const conexion = mysql.createConnection({
 
 // PROBAR CONEXIÓN
 conexion.connect((error) => {
-    if (error) {
-        console.error('Error al conectar con MySQL:', error.message);
-    } else {
-        console.log('Conexión exitosa a MySQL');
-    }
+  if (error) {
+    console.error('Error al conectar con MySQL:', error);
+    return;
+  }
+
+  console.log('Conexión exitosa a MySQL');
 });
 
 
