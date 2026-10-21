@@ -17,6 +17,13 @@ const conexion = mysql.createConnection({
     port: Number(process.env.MYSQLPORT || 3306)
 });
 
+
+console.log('MYSQLHOST configurado:', Boolean(process.env.MYSQLHOST));
+console.log('MYSQLDATABASE configurada:', Boolean(process.env.MYSQLDATABASE));
+console.log('MYSQLUSER configurado:', Boolean(process.env.MYSQLUSER));
+console.log('MYSQLPORT configurado:', Boolean(process.env.MYSQLPORT));
+
+
 // PROBAR CONEXIÓN
 conexion.connect((error) => {
   if (error) {
