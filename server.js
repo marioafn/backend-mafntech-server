@@ -8,6 +8,14 @@ app.use(cors());
 app.use(express.json());
 
 
+
+console.log('--- DIAGNÓSTICO MYSQL ---');
+console.log('MYSQLHOST:', JSON.stringify(process.env.MYSQLHOST));
+console.log('MYSQLDATABASE configurada:', Boolean(process.env.MYSQLDATABASE));
+console.log('MYSQLUSER configurada:', Boolean(process.env.MYSQLUSER));
+console.log('MYSQLPORT:', JSON.stringify(process.env.MYSQLPORT));
+console.log('MYSQLPASSWORD configurada:', Boolean(process.env.MYSQLPASSWORD));
+
  // CONEXIÓN MYSQL: RAILWAY O XAMPP
 const conexion = mysql.createConnection({
     host: process.env.MYSQLHOST || 'localhost',
