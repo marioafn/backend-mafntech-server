@@ -17,12 +17,17 @@ console.log('MYSQLPORT:', JSON.stringify(process.env.MYSQLPORT));
 console.log('MYSQLPASSWORD configurada:', Boolean(process.env.MYSQLPASSWORD));
 
  // CONEXIÓN MYSQL: RAILWAY O XAMPP
+// CONEXIÓN SEGURA A AIVEN MYSQL
 const conexion = mysql.createConnection({
-    host: process.env.MYSQLHOST || 'localhost',
-    user: process.env.MYSQLUSER || 'root',
-    password: process.env.MYSQLPASSWORD || '',
-    database: process.env.MYSQLDATABASE || 'tiendainformatica',
-    port: Number(process.env.MYSQLPORT || 3306)
+    host: process.env.MYSQLHOST,
+    user: process.env.MYSQLUSER,
+    password: process.env.MYSQLPASSWORD,
+    database: process.env.MYSQLDATABASE,
+    port: Number(process.env.MYSQLPORT),
+    ssl: {
+        ca: process.env.MYSQL_SSL_CA
+    },
+    connectTimeout: 20000
 });
 
 
